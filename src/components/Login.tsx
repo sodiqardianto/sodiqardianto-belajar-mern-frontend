@@ -18,7 +18,11 @@ export default function Login() {
                 <div className="field">
                   <label className="label">Password</label>
                   <div className="control">
-                    <input type="text" className="input" placeholder="******" />
+                    <input
+                      type="password"
+                      className="input"
+                      placeholder="******"
+                    />
                   </div>
                 </div>
                 <div className="field mt-5">

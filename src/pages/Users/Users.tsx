@@ -1,11 +1,11 @@
 import React from "react"
-import Layout from "./Layout"
-import UserList from "../components/UserList"
+import Layout from "../Layout"
+import ListUser from "../../components/Users/ListUser"
 
 export default function Users() {
   return (
     <Layout>
-      <UserList />
+      <ListUser />
     </Layout>
   )
 }
