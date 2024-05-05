@@ -1,7 +1,19 @@
-import React from "react"
 import { NavLink } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { Logout, reset } from "../features/authSlice"
 
 export default function Navbar() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { user } = useSelector((state: any) => state.auth)
+
+  const LogoutUser = () => {
+    dispatch(Logout() as any)
+    dispatch(reset())
+    navigate("/")
+  }
+
   return (
     <div>
       <nav
@@ -37,7 +49,9 @@ export default function Navbar() {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <button className="button is-light">Log out</button>
+                <button className="button is-light" onClick={LogoutUser}>
+                  Log out
+                </button>
               </div>
             </div>
           </div>

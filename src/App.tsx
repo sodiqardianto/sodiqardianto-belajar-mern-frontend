@@ -7,24 +7,26 @@ import AddUser from "./pages/Users/AddUser"
 import EditUser from "./pages/Users/EditUser"
 import AddProduct from "./pages/Products/AddProduct"
 import EditProduct from "./pages/Products/EditProduct"
+import PrivateRoutes from "./utils/PrivateRoutes"
+import AuthAdminAccess from "./utils/AuthAdminAccess"
 
-const App = () => {
+export default function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/users/create" element={<AddUser />} />
-          <Route path="/users/edit/:id" element={<EditUser />} />
+          <Route element={<AuthAdminAccess />}>
+            <Route path="/users" element={<Users />} />
+            <Route path="/users/create" element={<AddUser />} />
+            <Route path="/users/edit/:id" element={<EditUser />} />
+          </Route>
           <Route path="/products" element={<Products />} />
           <Route path="/products/create" element={<AddProduct />} />
           <Route path="/products/edit/:id" element={<EditProduct />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
-
-export default App

@@ -4,6 +4,9 @@ import { Provider } from "react-redux"
 import App from "./App"
 import { store } from "./app/store"
 import "bulma/css/bulma.css"
+import axios from "axios"
+
+axios.defaults.withCredentials = true
 
 const container = document.getElementById("root")
 
